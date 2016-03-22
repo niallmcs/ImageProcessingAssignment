@@ -1,3 +1,5 @@
+import visionsystem.ImageOp;
+
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 

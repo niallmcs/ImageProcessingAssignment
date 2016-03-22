@@ -1,4 +1,6 @@
-import java.awt.image.*;
+import visionsystem.JVision;
+
+import java.awt.image.BufferedImage;
 
 public class VisionSystem
 {
@@ -25,7 +27,7 @@ public class VisionSystem
 			//images to test
 			BufferedImage[] testImages = new BufferedImage[24];
 			
-			Utilities.displayFourImages(trainingImages,1,2,3,4,jvis, "test");
+			Utilities.displayFourImages(trainingImages,5,6,7,8,jvis, "test");
 			
 			//preprocess images
 			for (int i=0;i<12;i++)

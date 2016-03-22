@@ -1,3 +1,5 @@
+import visionsystem.ImageOp;
+
 import java.awt.image.BufferedImage;
 
 public class FeatureExtraction 

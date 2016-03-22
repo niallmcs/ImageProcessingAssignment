@@ -1,3 +1,7 @@
+import visionsystem.Histogram;
+import visionsystem.HistogramException;
+import visionsystem.ImageOp;
+
 import java.awt.image.BufferedImage;
 
 public class Preprocess {

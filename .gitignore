@@ -24,3 +24,5 @@ Thumbs.db
 
 bin/
 .settings/
+.floo
+.flooignore

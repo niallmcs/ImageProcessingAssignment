@@ -1,6 +1,11 @@
+import visionsystem.GraphPlot;
+import visionsystem.Histogram;
+import visionsystem.ImageOp;
+import visionsystem.JVision;
+
 import java.awt.image.BufferedImage;
 
-public class Utilities 
+public class Utilities
 {
 	//loads all training images, only loads 4 classes for now
 	public static BufferedImage [] loadImageData()
