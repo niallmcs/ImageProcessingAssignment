@@ -5,6 +5,7 @@ import visionsystem.JVision;
 
 import java.awt.image.BufferedImage;
 
+@Deprecated
 public class Utilities
 {
 	//loads all training images, only loads 4 classes for now

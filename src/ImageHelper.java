@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 /**
  * Created by Niall McShane on 22/03/2016.
  */
+@Deprecated
 public class ImageHelper {
 
     public static BufferedImage getSampleImage(){

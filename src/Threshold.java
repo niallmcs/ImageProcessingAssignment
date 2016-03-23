@@ -3,6 +3,7 @@ import visionsystem.ImageOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 
+@Deprecated
 public class Threshold {
 	
 	//create binary image using manual threshold LUT

@@ -2,7 +2,8 @@ import visionsystem.ImageOp;
 
 import java.awt.image.BufferedImage;
 
-public class Postprocess 
+@Deprecated
+public class Postprocess
 {
 	
 	//clean up thresholded image

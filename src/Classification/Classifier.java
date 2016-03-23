@@ -1,10 +1,14 @@
 package classification;
 
+import imagewrappers.ImageModel;
+
+import java.util.List;
+
 /**
- * Created by Kamern on 22/03/2016.
+ * Created by Cathan O'Donnell on 22/03/2016.
  */
 public interface Classifier {
 
-    String classify();
+    String classify(List<FeatureClassificationItem> classificationItems, ImageModel imageToClassify, int... features);
 
 }

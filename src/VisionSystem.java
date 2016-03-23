@@ -2,6 +2,7 @@ import visionsystem.JVision;
 
 import java.awt.image.BufferedImage;
 
+@Deprecated
 public class VisionSystem
 {
 	public static void main(String[] args)
@@ -17,7 +18,9 @@ public class VisionSystem
 			//create jvision window and sets size
 			JVision jvis = new JVision();
 			jvis.setSize(1400, 1000);
-			
+
+
+
 			//training sets
 			BufferedImage[] trainingImages = Utilities.loadImageData();
 			BufferedImage[] preprocessedImages = new BufferedImage[trainingImages.length];

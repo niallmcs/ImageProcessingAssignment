@@ -4,6 +4,7 @@ import visionsystem.ImageOp;
 
 import java.awt.image.BufferedImage;
 
+@Deprecated
 public class Preprocess {
 	
 	public static BufferedImage preprocessAnImage(BufferedImage source)

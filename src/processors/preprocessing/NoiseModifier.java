@@ -1,9 +1,10 @@
-package preprocessing;
+package processors.preprocessing;
 
 import visionsystem.ImageOp;
 
 import java.awt.image.BufferedImage;
 
+@Deprecated
 public class NoiseModifier {
 
     public BufferedImage removeNoiseUsingConvolution(BufferedImage bufferedImage, float[] mask){

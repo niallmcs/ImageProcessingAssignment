@@ -1,4 +1,4 @@
-package preprocessing;
+package processors.preprocessing;
 
 import visionsystem.Histogram;
 import visionsystem.HistogramException;
@@ -6,6 +6,7 @@ import visionsystem.ImageOp;
 
 import java.awt.image.BufferedImage;
 
+@Deprecated
 public class ContrastModifier {
 
     public BufferedImage modifyWithPowerLaw(BufferedImage bufferedImage, double gamma) {

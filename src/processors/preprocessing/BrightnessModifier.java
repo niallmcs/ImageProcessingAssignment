@@ -1,10 +1,11 @@
-package preprocessing;
+package processors.preprocessing;
 
+import processors.Processor;
 import visionsystem.ImageOp;
 
 import java.awt.image.BufferedImage;
 
-public class BrightnessModifier {
+public class BrightnessModifier implements Processor {
 
     private final int NUM_COLOURS = 256;
 
@@ -14,7 +15,7 @@ public class BrightnessModifier {
         this.amount = amount;
     }
 
-    public BufferedImage modifyBrightness(BufferedImage image) {
+    public BufferedImage process(BufferedImage image) {
         short[] increaseLookupTable = new short[NUM_COLOURS];
         int output = 0;
 
@@ -33,6 +34,11 @@ public class BrightnessModifier {
         image = ImageOp.pixelop(image, increaseLookupTable);
 
         return image;
+    }
+
+    @Override
+    public String getProcessName() {
+        return "Brightness Modification";
     }
 
     //TODO: Not implemented yet
