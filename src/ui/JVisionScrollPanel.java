@@ -65,15 +65,21 @@ public class JVisionScrollPanel extends JVision {
         JPanel imagePanel = new JPanel();
         imagePanel.setLayout(new GridLayout(2,1));
         ImageIcon imageIcon = new ImageIcon(image);
-        ImageIcon histogramImageIcon = new ImageIcon(histogram);
+
         JLabel jp = new JLabel(figname, imageIcon, 0);
-        JLabel jp2 = new JLabel(figname + " histogram", histogramImageIcon, 0);
+
         jp.setVerticalTextPosition(1);
         jp.setHorizontalTextPosition(0);
-        jp2.setVerticalTextPosition(1);
-        jp2.setHorizontalTextPosition(0);
+
         imagePanel.add(jp);
-        imagePanel.add(jp2);
+
+        if(histogram != null){
+            ImageIcon histogramImageIcon = new ImageIcon(histogram);
+            JLabel jp2 = new JLabel(figname + " histogram", histogramImageIcon, 0);
+            jp2.setVerticalTextPosition(1);
+            jp2.setHorizontalTextPosition(0);
+            imagePanel.add(jp2);
+        }
 
         JPanel currentImagePanel = imagePanels.get(imagePanels.size()-1);
         currentImagePanel.add(imagePanel);
