@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 /**
  * Created by Cathan O'Donnell on 22/03/2016.
  */
-public class ImageModel {
+public class ImageModel implements Cloneable{
 
     private BufferedImage bufferedImage;
     private final Histogram histogram;
@@ -30,7 +30,7 @@ public class ImageModel {
         if(bufferedImage.getType() != 12 && bufferedImage.getType() != 11) {
             this.histogram = new Histogram(bufferedImage);
         }else{
-            this.histogram = new Histogram();
+            this.histogram = null;
         }
         this.propertyModel = new PropertyModel();
     }
@@ -54,7 +54,10 @@ public class ImageModel {
     public PropertyModel getPropertyModel() { return propertyModel; }
 
     public GraphPlot toGraphPlot(){
-        return new GraphPlot(histogram);
+        if(histogram != null){
+            return new GraphPlot(histogram);
+        }
+        return null;
     }
 
 }

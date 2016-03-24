@@ -1,9 +1,9 @@
 package util;
 
 import imagewrappers.ImageModel;
+import ui.JVisionScrollPanel;
 import visionsystem.Histogram;
 import visionsystem.HistogramException;
-import visionsystem.JVision;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class DisplayManager {
     private static final int IMAGE_HEIGHT = 300;
     private static final int START_X = 1;
     private static final int START_Y = 1;
-    private final JVision jvision;
+    private final JVisionScrollPanel jvision;
     private final int maxWidth;
     private final int maxHeight;
 
@@ -27,7 +27,7 @@ public class DisplayManager {
 
     private List<ImageModel> imageModels = new ArrayList<>();
     
-    public DisplayManager(JVision jvision){
+    public DisplayManager(JVisionScrollPanel jvision){
         this.jvision = jvision;
         this.maxWidth = jvision.getWidth();
         this.maxHeight = jvision.getHeight();
@@ -44,27 +44,33 @@ public class DisplayManager {
         for (ImageModel image : imageDisplayPipeline) {
 
             //display the image
-            jvision.imdisp(image.getBufferedImage(), image.getTitle(), currentXPosition, currentYPosition);
+            jvision.imageDisplay(image.getBufferedImage(), image.toGraphPlot(), image.getTitle(), currentXPosition, currentYPosition, 300);
 
             //generate the histogram dynamically...
-            jvision.imdisp(image.toGraphPlot(), image.getTitle() + " Histogram", currentXPosition, currentYPosition + IMAGE_HEIGHT);
+
+//            if(image.toGraphPlot() != null){
+////                jvision.imdisp(image.toGraphPlot(), image.getTitle() + " Histogram", currentXPosition, currentYPosition + IMAGE_HEIGHT);
+//                jvision.imageDisplay(image.getBufferedImage(), image.toGraphPlot(), image.getTitle(), currentXPosition, currentYPosition, 300);
+//            }
+
 
             //increment the counts
 //            currentXPosition = currentXPosition > maxWidth ? START_X : currentXPosition + IMAGE_WIDTH ;
 //            currentYPosition = currentYPosition > maxHeight ?  currentYPosition + IMAGE_HEIGHT : START_Y;
 
-            if(currentXPosition >= maxWidth){
-                currentXPosition = START_X;
-                currentYPosition = currentYPosition + (IMAGE_HEIGHT * 2);
-            }else{
+//            if(currentXPosition >= maxWidth){
+//                currentXPosition = START_X;
+//                currentYPosition = currentYPosition + (IMAGE_HEIGHT * 2);
+//            }else{
                 currentXPosition += IMAGE_WIDTH;
-            }
+//            }
         }
     }
 
     public void newLine(){
         currentXPosition = START_X;
         currentYPosition = currentYPosition + (IMAGE_HEIGHT * 2);
+        jvision.insertNewLine();
     }
 
     public void addImage(BufferedImage bufferedImage, String title) throws HistogramException {

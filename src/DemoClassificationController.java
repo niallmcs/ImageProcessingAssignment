@@ -10,12 +10,12 @@ import processors.preprocessing.HistogramEqualisationContrastModifier;
 import processors.preprocessing.MedianNoiseModifier;
 import processors.segmentation.AutomaticThresholdSegmentation;
 import processors.segmentation.EdgeSegmentation;
+import ui.JVisionScrollPanel;
 import util.DisplayManager;
 import util.ImageHelper;
 import util.TestImageHelper;
 import util.TrainingImageHelper;
 import visionsystem.HistogramException;
-import visionsystem.JVision;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -34,8 +34,7 @@ public class DemoClassificationController {
 //        BufferedImage pearImage = ImageHelper.getSampleImageFromClass(ImageHelper.TYPE_PEAR);
 //        BufferedImage tomatoImage = ImageHelper.getSampleImageFromClass(ImageHelper.TYPE_TOMATO);
 
-        JVision jVision = new JVision();
-        jVision.setSize(1800, 1000);
+        JVisionScrollPanel jVision = new JVisionScrollPanel(1800, 1000);
 
         displayManager = new DisplayManager(jVision);
 

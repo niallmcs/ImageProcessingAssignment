@@ -31,4 +31,10 @@ public class DoubleFeatureClassificationItem extends FeatureClassificationItem {
                 ", featureB=" + featureB +
                 '}';
     }
+
+    @Override
+    public String toCsv() {
+        return getClassification() + "," + featureA + "," + featureB;
+    }
+
 }

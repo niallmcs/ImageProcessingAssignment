@@ -23,4 +23,9 @@ public class SingleFeatureClassificationItem extends FeatureClassificationItem {
                 ", feature=" + feature +
                 '}';
     }
+
+    @Override
+    public String toCsv() {
+        return getClassification() + "," + feature;
+    }
 }

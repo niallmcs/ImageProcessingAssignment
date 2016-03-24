@@ -79,4 +79,21 @@ public class TestImageHelper {
         return images;
     }
 
+    public static List<ImageModel> getAllStartingForClassification(String classification) throws HistogramException {
+        List<ImageModel> images = new ArrayList<>();
+        ImageModel tempImageModel;
+        String foundClassification;
+
+        for (String path : testingFileLocations) {
+            foundClassification = ImageHelper.computeClassFromPath(path);
+
+            if(classification.equals(foundClassification)){
+                tempImageModel = new ImageModel(ImageOp.readInImage(path), classification);
+                tempImageModel.getPropertyModel().setClassification(classification);
+                images.add(tempImageModel);
+            }
+        }
+        return images;
+    }
+
 }

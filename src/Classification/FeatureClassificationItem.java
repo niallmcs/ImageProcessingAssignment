@@ -23,4 +23,6 @@ public abstract class FeatureClassificationItem {
     public String getClassification() {
         return classification;
     }
+
+    public abstract String toCsv();
 }

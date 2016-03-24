@@ -10,6 +10,7 @@ import processors.preprocessing.MedianNoiseModifier;
 import processors.segmentation.AutomaticThresholdSegmentation;
 import processors.segmentation.EdgeSegmentation;
 import util.ImageHelper;
+import util.TestImageHelper;
 import util.TrainingImageHelper;
 
 import java.util.List;
@@ -24,20 +25,26 @@ public class DemoClassificationPipelineController {
         PipelineProcessor pipelineProcessor = new PipelineProcessor();
         pipelineProcessor.addProcessor(new BrightnessModifier(75));
         pipelineProcessor.addProcessor(new HistogramEqualisationContrastModifier());
-        pipelineProcessor.addProcessor(new MedianNoiseModifier(5));
+        pipelineProcessor.addProcessor(new MedianNoiseModifier(2));
         pipelineProcessor.addProcessor(new EdgeSegmentation());
-        pipelineProcessor.addProcessor(new AutomaticThresholdSegmentation(0.5));
+        pipelineProcessor.addProcessor(new AutomaticThresholdSegmentation(0.8));
         pipelineProcessor.addProcessor(new OpenPostProcessor(2));
         pipelineProcessor.addProcessor(new ClosePostProcessor(2));
 
-        ImageModel testImageModel = TrainingImageHelper.getSampleImageFromClass(ImageHelper.TYPE_TOMATO);
+        ImageModel testImageModel = TestImageHelper.getSampleImageFromClass(ImageHelper.TYPE_COW);
 
         List<ImageModel> imageModels = TrainingImageHelper.getStartingTrainingImages();
+        List<ImageModel> testImages = TestImageHelper.getStartingTestingImages();
 
         ClassificationPipeline classificationPipeline = new ClassificationPipeline(pipelineProcessor, imageModels);
+        classificationPipeline.processTrainingSet();
 
-        String result = classificationPipeline.classify(testImageModel, FeatureExtractor.COMPACTNESS, FeatureExtractor.PERIMETER);
 
-        System.out.println("Result " + result);
+        int valueOfK = 3;
+        String result = classificationPipeline.classify(testImageModel, valueOfK, true, FeatureExtractor.AREA, FeatureExtractor.PERIMETER);
+
+        Double correctPercentage = classificationPipeline.classifyImagesAndReturnSuccess(testImages, valueOfK, true, FeatureExtractor.COMPACTNESS);
+        System.out.println("Result for classification: " + String.valueOf(correctPercentage) + "%");
+
     }
 }

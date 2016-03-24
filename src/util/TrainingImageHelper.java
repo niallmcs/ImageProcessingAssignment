@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Niall McShane on 23/03/2016.
@@ -72,6 +74,48 @@ public class TrainingImageHelper {
                     tempImageModel.getPropertyModel().setClassification(classes[i]);
                     images.add(tempImageModel);
                 }
+            }
+        }
+        return images;
+    }
+
+    public static List<ImageModel> getSampleForEachClassFromStart() throws HistogramException {
+        Map<String, Boolean> values = new HashMap<>();
+        for (String classification : ImageHelper.STARTING_CLASSES) {
+            values.put(classification, false);
+        }
+
+        List<ImageModel> images = new ArrayList<>();
+        ImageModel tempImageModel;
+        String classification;
+
+        for (String path : trainingFileLocations) {
+            classification = ImageHelper.computeClassFromPath(path);
+
+            if(values.containsKey(classification)){
+                if(!values.get(classification)){
+                    tempImageModel = new ImageModel(ImageOp.readInImage(path), classification);
+                    tempImageModel.getPropertyModel().setClassification(classification);
+                    images.add(tempImageModel);
+                    values.put(classification, true);
+                }
+            }
+        }
+        return images;
+    }
+
+    public static List<ImageModel> getAllStartingForClassification(String classification) throws HistogramException {
+        List<ImageModel> images = new ArrayList<>();
+        ImageModel tempImageModel;
+        String foundClassification;
+
+        for (String path : trainingFileLocations) {
+            foundClassification = ImageHelper.computeClassFromPath(path);
+
+            if(classification.equals(foundClassification)){
+                tempImageModel = new ImageModel(ImageOp.readInImage(path), classification);
+                tempImageModel.getPropertyModel().setClassification(classification);
+                images.add(tempImageModel);
             }
         }
         return images;

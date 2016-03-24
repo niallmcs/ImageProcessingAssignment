@@ -1,6 +1,5 @@
 import imagewrappers.ImageModel;
 import pipeline.PipelineProcessor;
-import util.DisplayManager;
 import util.ImageHelper;
 import util.TrainingImageHelper;
 import visionsystem.JVision;
@@ -28,11 +27,11 @@ public class DemoPipelineController {
         List<ImageModel> imageModels = pipelineProcessor.generateImageModels(imageModel);
 
 
-        JVision jVision = new JVision();
-        jVision.setSize(1800, 1000);
+        JVision JVisionScrollPanel = new JVision();
+        JVisionScrollPanel.setSize(1800, 1000);
 
-        DisplayManager displayManager = new DisplayManager(jVision);
-        displayManager.drawPipeline(imageModels);
+//        DisplayManager displayManager = new DisplayManager(JVisionScrollPanel);
+//        displayManager.drawPipeline(imageModels);
     }
 
 }
