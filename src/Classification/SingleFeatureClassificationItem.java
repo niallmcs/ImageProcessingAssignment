@@ -15,4 +15,12 @@ public class SingleFeatureClassificationItem extends FeatureClassificationItem {
     public int getFeature() {
         return feature;
     }
+
+    @Override
+    public String toString() {
+        return "SingleFeatureClassificationItem{" +
+                "classification=" + getClassification() +
+                ", feature=" + feature +
+                '}';
+    }
 }

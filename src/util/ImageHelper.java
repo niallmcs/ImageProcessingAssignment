@@ -22,10 +22,14 @@ public class ImageHelper {
     public final static String TYPE_TOMATO = "tomato";
     public final static String TYPE_PEAR = "pear";
     public final static String TYPE_COW = "cow";
+    public final static String TYPE_CAR = "car";
     public final static String TYPE_DOG = "dog";
+    public final static String TYPE_HORSE = "horse";
+    public final static String TYPE_CUP = "cup";
+    public final static String TYPE_APPLE = "apple";
 
-    public final static String[] STARTING_CLASSES = { "tomato","pear","cow","dog" };
-    public final static String[] FINAL_CLASSES = {"horse", "apple", "car", "cup", "tomato","pear","cow","dog"};
+    public final static String[] STARTING_CLASSES = { TYPE_TOMATO, TYPE_PEAR, TYPE_COW, TYPE_DOG };
+    public final static String[] FINAL_CLASSES = {TYPE_HORSE, TYPE_APPLE, TYPE_CAR, TYPE_CUP, TYPE_TOMATO, TYPE_PEAR, TYPE_COW, TYPE_DOG };
 
     static List<String> trainingFileLocations = new ArrayList<>();
     static List<String> testingFileLocations = new ArrayList<>();

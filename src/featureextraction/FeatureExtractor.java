@@ -12,6 +12,10 @@ import java.util.List;
  */
 public class FeatureExtractor {
 
+    public static final String AREA = "area";
+    public static final String PERIMETER = "perimeter";
+    public static final String COMPACTNESS = "compactness";
+
     private static final int MAX_COLOURS = 255;
 
     public static List<ImageModel> computePropertyModelsFromList(List<ImageModel> imageModels) {
@@ -24,9 +28,18 @@ public class FeatureExtractor {
     }
     
     public static ImageModel computePropertiesForImageModel(ImageModel imageModel){
-        imageModel.getPropertyModel().setArea(computeArea(imageModel.getBufferedImage()));
-        imageModel.getPropertyModel().setPerimeter(computePerimeter(imageModel.getBufferedImage()));
-        imageModel.getPropertyModel().setCompactness(computeCompactness(imageModel.getBufferedImage()));
+
+        int area = computeArea(imageModel.getBufferedImage());
+        int perimeter = computePerimeter(imageModel.getBufferedImage());
+        int compactness = computeCompactness(imageModel.getBufferedImage());
+
+        imageModel.getPropertyModel().setArea(area);
+        imageModel.getPropertyModel().setPerimeter(perimeter);
+        imageModel.getPropertyModel().setCompactness(compactness);
+
+        imageModel.getPropertyModel().setFeature(AREA, area);
+        imageModel.getPropertyModel().setFeature(PERIMETER, perimeter);
+        imageModel.getPropertyModel().setFeature(COMPACTNESS, compactness);
         return imageModel;
     }
 

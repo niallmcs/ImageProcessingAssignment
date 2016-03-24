@@ -1,5 +1,7 @@
 package processors;
 
+import visionsystem.HistogramException;
+
 import java.awt.image.BufferedImage;
 
 /**
@@ -7,7 +9,7 @@ import java.awt.image.BufferedImage;
  */
 public interface Processor {
 
-    public BufferedImage process(BufferedImage bufferedImage);
+    public BufferedImage process(BufferedImage bufferedImage) throws HistogramException;
 
     public String getProcessName();
 

@@ -82,7 +82,7 @@ public class DityStart {
 //        //generate a new window
 //        JVision newJVision = new JVision();
 //        newJVision.setSize(1800, 1000);
-//        DisplayHelper displayHelper = new DisplayHelper(newJVision);
+//        DisplayManager displayHelper = new DisplayManager(newJVision);
 //        displayHelper.addImage(postProcessedThresholdedClosed, "postProcessedThresholdedClosed");
 //        displayHelper.addImage(ImageOp.erode(postProcessedThresholdedClosed, 2), "postProcessedThresholdedClosed Eroded");
 //        displayHelper.drawPipeline();

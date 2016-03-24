@@ -22,7 +22,7 @@ public class PipelineProcessor {
         this.processors = processors;
     }
 
-    public ImageModel process(ImageModel imageModel) {
+    public ImageModel process(ImageModel imageModel) throws HistogramException {
         for(Processor processor : processors) {
             imageModel.setBufferedImage(processor.process(imageModel.getBufferedImage()));
         }
@@ -35,6 +35,10 @@ public class PipelineProcessor {
         List<ImageModel> imageModels = new LinkedList<>();
 
         ImageModel tempImageModel = null;
+
+        //store the original
+        tempImageModel = new ImageModel(imageModel.getBufferedImage(),"Original");
+        imageModels.add(tempImageModel);
 
         for(Processor processor : processors) {
             if(tempImageModel == null) {

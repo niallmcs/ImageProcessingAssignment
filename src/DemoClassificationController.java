@@ -10,7 +10,7 @@ import processors.preprocessing.HistogramEqualisationContrastModifier;
 import processors.preprocessing.MedianNoiseModifier;
 import processors.segmentation.AutomaticThresholdSegmentation;
 import processors.segmentation.EdgeSegmentation;
-import util.DisplayHelper;
+import util.DisplayManager;
 import util.ImageHelper;
 import util.TestImageHelper;
 import util.TrainingImageHelper;
@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class DemoClassificationController {
 
-    private static DisplayHelper displayHelper;
+    private static DisplayManager displayManager;
 
     public static void main(String[] args) throws Exception {
 
@@ -37,14 +37,14 @@ public class DemoClassificationController {
         JVision jVision = new JVision();
         jVision.setSize(1800, 1000);
 
-        displayHelper = new DisplayHelper(jVision);
+        displayManager = new DisplayManager(jVision);
 
         ImageModel testImageModel = TestImageHelper.getSampleImageFromClass(ImageHelper.TYPE_COW);
 
         List<ImageModel> startingTrainingImages = TrainingImageHelper.getFinalTrainingImages();
         List<ImageModel> startingTestingImages = TestImageHelper.getFinalTestingImages();
 
-        //Pipeline processing
+//Pipeline processing
         /*
          *  Preprocessing modifiers
          */
@@ -77,9 +77,9 @@ public class DemoClassificationController {
 
         //process the test image
         testImageModel = pipelineProcessor.process(testImageModel);
-        displayHelper.addImage(testImageModel);
+        displayManager.addImage(testImageModel);
 
-        displayHelper.drawPipeline();
+        displayManager.drawPipeline();
 
         //extract our features for training images
         FeatureExtractor featureExtractor = new FeatureExtractor();

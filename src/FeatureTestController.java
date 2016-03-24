@@ -4,7 +4,7 @@ import pipeline.PipelineProcessor;
 import processors.postprocessing.OpenPostProcessor;
 import processors.preprocessing.MedianNoiseModifier;
 import processors.segmentation.AutomaticThresholdSegmentation;
-import util.DisplayHelper;
+import util.DisplayManager;
 import util.ImageHelper;
 import visionsystem.JVision;
 
@@ -23,8 +23,8 @@ public class FeatureTestController {
 
         imageModel = pipelineProcessor.process(imageModel);
 
-        DisplayHelper displayHelper = new DisplayHelper(new JVision());
-        displayHelper.drawPipeline(pipelineProcessor.generateImageModels(imageModel));
+        DisplayManager displayManager = new DisplayManager(new JVision());
+        displayManager.drawPipeline(pipelineProcessor.generateImageModels(imageModel));
 
         FeatureExtractor featureExtractor = new FeatureExtractor();
         int area = featureExtractor.computeArea(imageModel.getBufferedImage());

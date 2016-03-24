@@ -1,6 +1,5 @@
 import imagewrappers.ImageModel;
-import util.DisplayHelper;
-import util.FeatureHelper;
+import util.DisplayManager;
 import util.ImageHelper;
 import visionsystem.HistogramException;
 import visionsystem.JVision;
@@ -17,7 +16,7 @@ public class MultiImageController {
         List<ImageModel> imageModelList = ImageHelper.getStartingTrainingImages();
 
         JVision jvis = new JVision();
-        DisplayHelper dh = new DisplayHelper(jvis);
+        DisplayManager dh = new DisplayManager(jvis);
 
         dh.drawPipeline(imageModelList);
 

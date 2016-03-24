@@ -1,9 +1,5 @@
 package classification;
 
-import imagewrappers.ImageModel;
-
-import java.util.List;
-
 /**
  * Created by Cathan O'Donnell on 23/03/2016.
  */
@@ -25,5 +21,14 @@ public class DoubleFeatureClassificationItem extends FeatureClassificationItem {
 
     public int getFeatureB() {
         return featureB;
+    }
+
+    @Override
+    public String toString() {
+        return "DoubleFeatureClassificationItem{" +
+                "classification=" + getClassification() +
+                ", featureA=" + featureA +
+                ", featureB=" + featureB +
+                '}';
     }
 }

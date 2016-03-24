@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Cathan O'Donnell on 22/03/2016.
  */
-public class DisplayHelper {
+public class DisplayManager {
 
     private static final int IMAGE_WIDTH = 300;
     private static final int IMAGE_HEIGHT = 300;
@@ -27,7 +27,7 @@ public class DisplayHelper {
 
     private List<ImageModel> imageModels = new ArrayList<>();
     
-    public DisplayHelper(JVision jvision){
+    public DisplayManager(JVision jvision){
         this.jvision = jvision;
         this.maxWidth = jvision.getWidth();
         this.maxHeight = jvision.getHeight();
@@ -60,6 +60,11 @@ public class DisplayHelper {
                 currentXPosition += IMAGE_WIDTH;
             }
         }
+    }
+
+    public void newLine(){
+        currentXPosition = START_X;
+        currentYPosition = currentYPosition + (IMAGE_HEIGHT * 2);
     }
 
     public void addImage(BufferedImage bufferedImage, String title) throws HistogramException {
